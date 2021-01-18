@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "12318313021",
+    "project_id": "shefield-school",
+    "firebase_url":"https://shefield-school-default-rtdb.firebaseio.com/",
+    "storage_bucket": "shefield-school.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12318313021:android:82532e5ae243a47de9b854",
+        "android_client_info": {
+          "package_name": "com.example.schoolsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12318313021-ocneoek76mafs6r7uti6hf9s28dn368u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8XdHmjJZ-HuUSl6UUYSF-hRvs9k1H2AQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12318313021-ocneoek76mafs6r7uti6hf9s28dn368u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
