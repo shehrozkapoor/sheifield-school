@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolsystem/constant/constant.dart';
 import 'package:schoolsystem/services/firebase_services.dart';
@@ -25,7 +26,6 @@ class _StudentHomePage extends State<StudentHomePage> {
           stream: _firebaseServices
               .getUserRef()
               .doc(_firebaseServices.getUserId())
-              .collection('userDetails')
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
@@ -70,7 +70,7 @@ class _StudentHomePage extends State<StudentHomePage> {
                               margin: EdgeInsets.only(top: 3, right: 3),
                               alignment: Alignment.center,
                               child: Text(
-                                snapshot.data.documents[0]['paymentstatus'],
+                                snapshot.data['paymentstatus'],
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 22,
@@ -108,8 +108,7 @@ class _StudentHomePage extends State<StudentHomePage> {
                               margin: EdgeInsets.only(top: 3, right: 3),
                               alignment: Alignment.center,
                               child: Text(
-                                "₦ ${snapshot.data.documents[0]['payment']}"
-                                    .toString(),
+                                "₦ ${snapshot.data['payment'].toString()}",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 22,
@@ -141,3 +140,6 @@ class _StudentHomePage extends State<StudentHomePage> {
         ));
   }
 }
+
+// snapshot.data.documents[0]['paymentstatus']
+// ₦ ${snapshot.data.documents[0]['payment']}

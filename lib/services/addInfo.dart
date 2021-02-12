@@ -7,8 +7,6 @@ class AddInfo {
     return _firebaseServices
         .getUserRef()
         .doc(_firebaseServices.getUserId())
-        .collection('userDetails')
-        .doc(_firebaseServices.getUserId())
         .set({
       "firstname": firstname,
       'lastname': lastname,
@@ -16,6 +14,9 @@ class AddInfo {
       'admin': false,
       'payment': 0,
       'paymentstatus': 'none',
+      'id': _firebaseServices.getUserId().toString()
     });
   }
 }
+// .collection('userDetails')
+// .doc(_firebaseServices.getUserId())

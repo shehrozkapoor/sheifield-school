@@ -1,35 +1,41 @@
 {
   "project_info": {
-    "project_number": "12318313021",
-    "project_id": "shefield-school",
-    "firebase_url":"https://shefield-school-default-rtdb.firebaseio.com/",
-    "storage_bucket": "shefield-school.appspot.com"
+    "project_number": "1040121277952",
+    "project_id": "schoolsystem-e8152",
+    "storage_bucket": "schoolsystem-e8152.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:12318313021:android:82532e5ae243a47de9b854",
+        "mobilesdk_app_id": "1:1040121277952:android:e744d751200df2b83f32e5",
         "android_client_info": {
           "package_name": "com.example.schoolsystem"
         }
       },
       "oauth_client": [
         {
-          "client_id": "12318313021-ocneoek76mafs6r7uti6hf9s28dn368u.apps.googleusercontent.com",
+          "client_id": "1040121277952-vjh1tjurqcj9rf351qos6a8pbdgl1vef.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8XdHmjJZ-HuUSl6UUYSF-hRvs9k1H2AQ"
+          "current_key": "AIzaSyBFtIVX8BJGSLEGTc5AO-dRWCEXWPXVxC4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "12318313021-ocneoek76mafs6r7uti6hf9s28dn368u.apps.googleusercontent.com",
+              "client_id": "1040121277952-vjh1tjurqcj9rf351qos6a8pbdgl1vef.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1040121277952-7o5m1cb76jr56brqk1i3328vet9mh48u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.id.jaks"
+              }
             }
           ]
         }

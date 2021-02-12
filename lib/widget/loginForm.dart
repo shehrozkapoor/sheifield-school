@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
     if (_loginAccountFeedback != null) {
       _alertDialogBuilder(_loginAccountFeedback);
     } else
-      Navigator.pushNamed(context, "/stuenthomepage");
+      Navigator.pushNamed(context, "/landingPage");
   }
 
   String _loginEmail = '';

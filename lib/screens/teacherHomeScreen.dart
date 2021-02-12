@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:schoolsystem/constant/constant.dart';
+import 'package:schoolsystem/constant/paymentStatusBtn.dart';
+import 'package:schoolsystem/screens/paymentStatus.dart';
 import 'package:schoolsystem/widget/bg.dart';
 import 'package:schoolsystem/widget/drawer.dart';
 
-class TeacherHomeScreen extends StatelessWidget {
+class TeacherHomeScreen extends StatefulWidget {
+  @override
+  _TeacherHomeScreenState createState() => _TeacherHomeScreenState();
+}
+
+class _TeacherHomeScreenState extends State<TeacherHomeScreen> {
+  String _paymentStatus = 'pending';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,71 +23,50 @@ class TeacherHomeScreen extends StatelessWidget {
         children: [
           BgImage(),
           Padding(
-            padding: const EdgeInsets.all(3.0),
+            padding: const EdgeInsets.all(4.0),
             child: Align(
               alignment: Alignment.topCenter,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          ),
-                        ],
-                        border: Border.all(color: Colors.red),
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(8.0)),
-                    child: Text('APPROVED PAYMENTS',
-                        style: Constant.regularHeadings),
-                  ),
-                  Container(
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.red),
-                        color: Colors.red,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(8.0)),
-                    child: Text(
-                      'PENDING PAYMENTS',
-                      style: Constant.regularHeadings,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _paymentStatus = 'accepted';
+                      });
+                    },
+                    child: PaymentBtn(
+                      btntext: "ACCEPTED PAYMENTS",
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          ),
-                        ],
-                        border: Border.all(color: Colors.red),
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(8.0)),
-                    child: Text(
-                      'REJECTED PAYMENTS',
-                      style: Constant.regularHeadings,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _paymentStatus = 'pending';
+                      });
+                    },
+                    child: PaymentBtn(
+                      btntext: "PENDING PAYMENTS",
                     ),
                   ),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _paymentStatus = 'rejected';
+                        });
+                      },
+                      child: PaymentBtn(btntext: "Rejected PAYMENTS")),
                 ],
               ),
             ),
-          )
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            padding: EdgeInsets.all(10),
+            child: PaymentStatus(
+              paymentStatus: _paymentStatus,
+            ),
+          ),
         ],
       ),
     );

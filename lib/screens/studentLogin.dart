@@ -14,7 +14,7 @@ class _StudentLoginState extends State<StudentLogin> {
     return Stack(
       children: [
         LoginForm(
-          welcomeString: "Welcome to Student Login",
+          welcomeString: "Welcome to Login",
           signInAS: 'student',
         ),
         Container(

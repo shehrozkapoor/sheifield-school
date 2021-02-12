@@ -11,13 +11,10 @@ class _StudentPaymentFormState extends State<StudentPaymentForm> {
   int _paymentAmount = 0;
   updateData() async {
     FirebaseServices _firebaseService = FirebaseServices();
-    CollectionReference collectionReference = _firebaseService
-        .getUserRef()
-        .doc(_firebaseService.getUserId())
-        .collection('userDetails');
-    await collectionReference
-        .doc(_firebaseService.getUserId())
-        .update({'payment': _paymentAmount, 'paymentStatus': "pending"});
+    DocumentReference documentReference =
+        _firebaseService.getUserRef().doc(_firebaseService.getUserId());
+    await documentReference
+        .update({'payment': _paymentAmount, 'paymentstatus': "pending"});
   }
 
   @override

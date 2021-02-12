@@ -1,15 +1,41 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:schoolsystem/constant/constant.dart';
-import 'package:schoolsystem/constant/test.dart';
 import 'package:schoolsystem/screens/studentHomePage.dart';
 import 'package:schoolsystem/screens/studentLogin.dart';
 import 'package:schoolsystem/screens/teacherHomeScreen.dart';
-import 'package:schoolsystem/services/checkadmin.dart';
+import 'package:schoolsystem/services/firebase_services.dart';
 
-class MyApplication extends StatelessWidget {
+class MyApplication extends StatefulWidget {
+  @override
+  _MyApplicationState createState() => _MyApplicationState();
+}
+
+class _MyApplicationState extends State<MyApplication> {
+  bool _isAdmin;
+  FirebaseServices _firebaseServices = FirebaseServices();
+  bool onPressed() {
+    _firebaseServices
+        .getUserRef()
+        .doc(_firebaseServices.getUserId())
+        .get()
+        .then((querySnapshot) {
+      _isAdmin = querySnapshot.data()['admin'];
+    });
+    return false;
+  }
+
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      onPressed();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +73,13 @@ class MyApplication extends StatelessWidget {
               // connection state is active
               if (streamSnapShot.connectionState == ConnectionState.active) {
                 User _user = streamSnapShot.data;
-                UserChecks _userChecks = UserChecks();
                 if (_user == null) {
                   return StudentLogin();
                 } else {
-                  
-                  return StudentHomePage();
-                  // return _userChecks.checkAdmin() == true
-                  //     ? TeacherHomeScreen()
-                  //     : StudentHomePage();
+                  // return TeacherHomeScreen();
+                  return _isAdmin == true
+                      ? TeacherHomeScreen()
+                      : StudentHomePage();
                 }
               }
               // checking the auth state - loading
